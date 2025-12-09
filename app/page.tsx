@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const fetchBlogs = async (): Promise<Blogpost[] | undefined> => {
   try {
     const data = await fetch("https://jsonplaceholder.typicode.com/posts");
@@ -16,6 +18,7 @@ export default async function Home() {
             <article key={post.id}>
               <h2>{post.title}</h2>
               <p>{post.body}</p>
+              <Link href={`/posts/${post.id}`}> Read more </Link>
             </article>
           ))
         : null}
